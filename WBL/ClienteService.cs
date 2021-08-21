@@ -8,147 +8,148 @@ using System.Threading.Tasks;
 
 namespace WBL
 {
-    
-        public interface IClienteService
+    public interface IClientesService
+    {
+        Task<DBEntity> Create(ClientesEntity entity);
+        Task<DBEntity> Delete(ClientesEntity entity);
+        Task<IEnumerable<ClientesEntity>> Get();
+        Task<ClientesEntity> GetById(ClientesEntity entity);
+        Task<DBEntity> Update(ClientesEntity entity);
+        Task<IEnumerable<ClientesEntity>> GetLista();
+    }
+
+    public class ClientesService : IClientesService
+    {
+        private readonly IDataAccess sql;
+
+        public ClientesService(IDataAccess _sql)
         {
-            Task<DBEntity> Create(ClienteEntity entity);
-            Task<DBEntity> Delete(ClienteEntity entity);
-            Task<IEnumerable<ClienteEntity>> Get();
-            Task<ClienteEntity> GetById(ClienteEntity entity);
-            Task<DBEntity> Update(ClienteEntity entity);
-            Task<IEnumerable<ClienteEntity>> GetLista();
+            sql = _sql;
         }
 
-        public class ClientesService : IClienteService
+        public async Task<IEnumerable<ClientesEntity>> Get()
         {
-            private readonly IDataAccess sql;
-
-            public ClientesService(IDataAccess _sql)
+            try
             {
-                sql = _sql;
-            }
+                var result = sql.QueryAsync<ClientesEntity>("ClientesObtener");
 
-            public async Task<IEnumerable<ClienteEntity>> Get()
-            {
-                try
-                {
-                    var result = sql.QueryAsync<ClienteEntity>("ClientesObtener");
-
-                    return await result;
-
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
-
+                return await result;
 
             }
-
-            public async Task<IEnumerable<ClienteEntity>> GetLista()
+            catch (Exception)
             {
-                try
-                {
-                    var result = sql.QueryAsync<ClienteEntity>("ClientesLista");
 
-                    return await result;
-                }
-                catch (Exception EX)
-                {
-
-                    throw;
-                }
+                throw;
             }
 
 
 
-            public async Task<ClienteEntity> GetById(ClienteEntity entity)
+        }
+
+        public async Task<IEnumerable<ClientesEntity>> GetLista()
+        {
+            try
             {
-                try
-                {
-                    var result = sql.QueryFirstAsync<ClienteEntity>("ClientesObtener", new
-                    {
-                        entity.ClientesId
-                    });
+                var result = sql.QueryAsync<ClientesEntity>("ClientesLista");
 
-                    return await result;
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
-
+                return await result;
             }
-
-            public async Task<DBEntity> Create(ClienteEntity entity)
+            catch (Exception EX)
             {
-                try
-                {
-                    var result = sql.ExecuteAsync("ClientesInsertar", new
-                    {
-                        entity.NombreCompleto,
-                        entity.Direccion,
-                        entity.Telefono,
-                        entity.Estado
-                    });
 
-                    return await result;
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
-
-            }
-
-            public async Task<DBEntity> Update(ClienteEntity entity)
-            {
-                try
-                {
-                    var result = sql.ExecuteAsync("ClientesActualizar", new
-                    {
-                        entity.ClientesId,
-                        entity.NombreCompleto,
-                        entity.Direccion,
-                        entity.Telefono,
-                        entity.Estado
-                    });
-
-                    return await result;
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
-
-            }
-
-            public async Task<DBEntity> Delete(ClienteEntity entity)
-            {
-                try
-                {
-                    var result = sql.ExecuteAsync("ClientesEliminar", new
-                    {
-                        entity.ClientesId
-                    });
-
-                    return await result;
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-
-
+                throw;
             }
         }
+
+
+
+        public async Task<ClientesEntity> GetById(ClientesEntity entity)
+        {
+            try
+            {
+                var result = sql.QueryFirstAsync<ClientesEntity>("ClientesObtener", new
+                {
+                    entity.ClientesId
+                });
+
+                return await result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        public async Task<DBEntity> Create(ClientesEntity entity)
+        {
+            try
+            {
+                var result = sql.ExecuteAsync("ClientesInsertar", new
+                {
+                    entity.NombreCompleto,
+                    entity.Direccion,
+                    entity.Telefono,
+                    entity.AgenciaId,
+                    entity.Estado
+                });
+
+                return await result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        public async Task<DBEntity> Update(ClientesEntity entity)
+        {
+            try
+            {
+                var result = sql.ExecuteAsync("ClientesActualizar", new
+                {
+                    entity.ClientesId,
+                    entity.NombreCompleto,
+                    entity.Direccion,
+                    entity.Telefono,
+                    entity.AgenciaId,
+                    entity.Estado
+                });
+
+                return await result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        public async Task<DBEntity> Delete(ClientesEntity entity)
+        {
+            try
+            {
+                var result = sql.ExecuteAsync("ClientesEliminar", new
+                {
+                    entity.ClientesId
+                });
+
+                return await result;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+    }
 }

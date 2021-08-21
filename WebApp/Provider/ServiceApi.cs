@@ -73,18 +73,18 @@ namespace WebApp
         #endregion
 
 
-        #region Alquiler
-        public async Task<IEnumerable<AlquilerEntity>> AlquilerGet()
+        #region Compra
+        public async Task<IEnumerable<CompraEntity>> CompraGet()
         {
-            var result = await client.ServicioGetAsync<IEnumerable<AlquilerEntity>>("api/Alquiler");
+            var result = await client.ServicioGetAsync<IEnumerable<CompraEntity>>("api/Compra");
 
             return result;
 
         }
 
-        public async Task<AlquilerEntity> AlquilerGetById(int id)
+        public async Task<CompraEntity> CompraGetById(int id)
         {
-            var result = await client.ServicioGetAsync<AlquilerEntity>("api/Alquiler/" + id);
+            var result = await client.ServicioGetAsync<CompraEntity>("api/Compra/" + id);
 
             if (result.CodeError is not 0) throw new Exception(result.MsgError);
 
@@ -94,10 +94,10 @@ namespace WebApp
 
         #endregion
 
-        #region Vehiculos
-        public async Task<IEnumerable<VehiculoEntity>> VehiculoGetLista()
+        #region Producto
+        public async Task<IEnumerable<ProductoEntity>> ProductoGetLista()
         {
-            var result = await client.ServicioGetAsync<IEnumerable<VehiculoEntity>>("api/Vehiculo/Lista");
+            var result = await client.ServicioGetAsync<IEnumerable<ProductoEntity>>("api/Producto/Lista");
 
             return result;
 

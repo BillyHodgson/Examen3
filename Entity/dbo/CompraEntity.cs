@@ -11,7 +11,7 @@ namespace Entity
 
         public CompraEntity()
         {
-            Cliente = Cliente ?? new ClienteEntity();
+            Cliente = Cliente ?? new ClientesEntity();
             Producto = Producto ?? new ProductoEntity();
 
         }
@@ -24,7 +24,7 @@ namespace Entity
 
 
         public int? ClientesId { get; set; }
-        public virtual ClienteEntity Cliente { get; set; }
+        public virtual ClientesEntity Cliente { get; set; }
 
         public int? ProductoId { get; set; }
         public ProductoEntity Producto { get; set; }
