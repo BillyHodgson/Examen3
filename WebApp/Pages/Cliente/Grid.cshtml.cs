@@ -23,6 +23,7 @@ namespace WebApp.Pages.Cliente
         {
             try
             {
+                if (!this.SessionOnline()) return RedirectToPage("../Login");
                 GridList = await service.ClientesGet();
 
                 return Page();

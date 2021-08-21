@@ -29,8 +29,6 @@
                 if (BValidateData(this.Formulario)) {
 
                     Loading.fire("Guardando");
-                    //var test = this.CalculoMontoTotalFn();
-                    //    test = this.CalculoMontoTotalCP;
                     this.CompraServicio(this.Entity).then(data => {
 
                         Loading.close();

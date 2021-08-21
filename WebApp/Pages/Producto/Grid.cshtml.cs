@@ -27,7 +27,8 @@ namespace WebApp.Pages.Producto
             {
                 try
                 {
-                    GridList = await productoService.Get();
+                 if (!this.SessionOnline()) return RedirectToPage("../Login");
+                GridList = await productoService.Get();
 
                     if (TempData.ContainsKey("Msg"))
                     {

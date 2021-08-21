@@ -52,7 +52,7 @@ namespace WebApp.Pages
         {
             HttpContext.Session.Clear();
 
-            return Redirect("../Login");
+            return Redirect("/Login");
         }
     }
 }

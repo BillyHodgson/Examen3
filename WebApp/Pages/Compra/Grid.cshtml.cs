@@ -23,6 +23,7 @@ namespace WebApp.Pages.Compra
 
             try
             {
+                if (!this.SessionOnline()) return RedirectToPage("../Login");
                 GridList = await service.CompraGet();
 
                 return Page();

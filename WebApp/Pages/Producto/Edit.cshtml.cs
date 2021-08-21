@@ -31,7 +31,8 @@ namespace WebApp.Pages.Producto
 
                 try
                 {
-                    if (id.HasValue)
+                if (!this.SessionOnline()) return RedirectToPage("../Login");
+                if (id.HasValue)
                     {
                         Entity = await productoService.GetById(new() { ProductoId = id });
                     }

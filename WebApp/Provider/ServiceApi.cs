@@ -77,7 +77,7 @@ namespace WebApp
 
         public async Task<CompraEntity> CompraGetById(int id)
         {
-            var result = await client.ServicioGetAsync<CompraEntity>("api/Compra/" + id);
+            var result = await client.ServicioGetAsync<CompraEntity>("api/Compra" + id);
 
             if (result.CodeError is not 0) throw new Exception(result.MsgError);
 
@@ -85,17 +85,12 @@ namespace WebApp
 
         }
 
+
+
         #endregion
 
         #region Producto
-        public async Task<IEnumerable<ProductoEntity>> ProductoGet()
-        {
-            var result = await client.ServicioGetAsync<IEnumerable<ProductoEntity>>("api/Producto");
-
-            return result;
-
-
-        }
+        
 
         public async Task<IEnumerable<ProductoEntity>> ProductoGetLista()
         {
