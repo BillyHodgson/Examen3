@@ -46,14 +46,7 @@ namespace WebApp
 
         }
 
-        public async Task<IEnumerable<AgenciaEntity>> AgenciaGetLista()
-        {
-            var result = await client.ServicioGetAsync<IEnumerable<AgenciaEntity>>("api/Agencia/Lista");
 
-            return result;
-
-
-        }
 
 
 

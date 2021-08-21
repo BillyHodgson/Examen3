@@ -37,6 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Compra\" />
+    <Folder Include="Pages\Producto\" />
     <Folder Include="wwwroot\App\Producto\" />
   </ItemGroup>
 

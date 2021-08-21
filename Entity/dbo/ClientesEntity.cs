@@ -8,10 +8,7 @@ namespace Entity
 {
     public class ClientesEntity : EN
     {
-        public ClientesEntity()
-        {
-            
-        }
+
         public int? ClientesId { get; set; }
         public string NombreCompleto { get; set; }
         public string Direccion { get; set; }

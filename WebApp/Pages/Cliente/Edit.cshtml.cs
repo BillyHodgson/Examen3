@@ -22,7 +22,6 @@ namespace WebApp.Pages.Cliente
 
         public ClientesEntity Entity = new ClientesEntity();
 
-        public IEnumerable<AgenciaEntity> AgenciaLista { get; set; } = new List<AgenciaEntity>();
 
         public async Task<IActionResult> OnGet()
         {
@@ -34,7 +33,6 @@ namespace WebApp.Pages.Cliente
                     Entity = await service.ClientesGetById  (id.Value);
                 }
 
-                AgenciaLista = await service.AgenciaGetLista();
 
                 return Page();
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class EN
+    public class EN : DBEntity
     {
         public bool Estado { get; set; }
 

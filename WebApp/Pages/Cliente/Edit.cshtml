@@ -33,13 +33,6 @@
                     <input type="text" class="form-control" asp-for="Entity.Telefono" v-model="Entity.Telefono" maxlength="250" required>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label for="Entity.AgenciaId" class="form-label">Agencia</label>
-
-                    <select asp-for="Entity.AgenciaId" v-model="Entity.AgenciaId" asp-items="@(new SelectList(Model.AgenciaLista,"AgenciaId","Nombre"))"
-                            class="form-select" required>
-                    </select>
-                </div>
 
 
                 <div class="form-group form-check form-switch">
