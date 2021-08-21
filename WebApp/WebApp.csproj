@@ -11,6 +11,8 @@
     <Content Remove="wwwroot\App\Compra\Edit.ts" />
     <Content Remove="wwwroot\App\Compra\Grid.ts" />
     <Content Remove="wwwroot\App\Login.ts" />
+    <Content Remove="wwwroot\App\Producto\Edit.ts" />
+    <Content Remove="wwwroot\App\Producto\Grid.ts" />
     <Content Remove="wwwroot\App\Registrarse.ts" />
     <Content Remove="wwwroot\Assets\Plugin\axios\AxiosConfig.ts" />
   </ItemGroup>
@@ -32,14 +34,10 @@
     <TypeScriptCompile Include="wwwroot\App\Compra\Edit.ts" />
     <TypeScriptCompile Include="wwwroot\App\Compra\Grid.ts" />
     <TypeScriptCompile Include="wwwroot\App\Login.ts" />
+    <TypeScriptCompile Include="wwwroot\App\Producto\Edit.ts" />
+    <TypeScriptCompile Include="wwwroot\App\Producto\Grid.ts" />
     <TypeScriptCompile Include="wwwroot\App\Registrarse.ts" />
     <TypeScriptCompile Include="wwwroot\Assets\Plugin\axios\AxiosConfig.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Compra\" />
-    <Folder Include="Pages\Producto\" />
-    <Folder Include="wwwroot\App\Producto\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace CompraEdit {
+﻿namespace ProductoEdit {
 
 
     var Entity = $("#AppEdit").data("entity");
@@ -12,16 +12,13 @@
 
         methods: {
 
-            CalculoMontoTotalFn() {
-                var total = ((this.Entity.Impuesto / 100) * this.Entity.Monto) + this.Entity.Monto;
-                return total;
-            },
-            CompraServicio(entity) {
+        
+            ProductoServicio(entity) {
 
-                if (entity.IdCompra == null) {
-                    return App.AxiosProvider.CompraGuardar(entity);
+                if (entity.IdProducto == null) {
+                    return App.AxiosProvider.ProductoGuardar(entity);
                 } else {
-                    return App.AxiosProvider.CompraActualizar(entity);
+                    return App.AxiosProvider.ProductoActualizar(entity);
                 }
             },
             Save() {
@@ -31,13 +28,13 @@
                     Loading.fire("Guardando");
                     //var test = this.CalculoMontoTotalFn();
                     //    test = this.CalculoMontoTotalCP;
-                    this.CompraServicio(this.Entity).then(data => {
+                    this.ProductoServicio(this.Entity).then(data => {
 
                         Loading.close();
 
                         if (data.CodeError == 0) {
-                            Toast.fire({ title: "Se ha realizado la compra!", icon: "success" })
-                                .then(() => window.location.href = "Compra/Grid")
+                            Toast.fire({ title: "Se ha guardado el Producto!", icon: "success" })
+                                .then(() => window.location.href = "Producto/Grid")
                         } else {
                             Toast.fire({ title: data.MsgError, icon: "error" });
 
@@ -63,12 +60,7 @@
 
         },
 
-        computed: {
-            CalculoMontoTotalCP: function (): number {
-                var total = ((this.Entity.Impuesto / 100) * this.Entity.Monto) + this.Entity.Monto;
-                return total;
-            }
-        }
+        
 
     });
 

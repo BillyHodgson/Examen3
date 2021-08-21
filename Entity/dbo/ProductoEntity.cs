@@ -8,7 +8,7 @@ namespace Entity
 {
     public class ProductoEntity : EN
     {
-        public int ProductoId { get; set; }
+        public int? ProductoId { get; set; }
 
         public string Descripcion { get; set; }
 
