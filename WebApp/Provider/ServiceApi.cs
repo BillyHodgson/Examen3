@@ -88,6 +88,15 @@ namespace WebApp
         #endregion
 
         #region Producto
+        public async Task<IEnumerable<ProductoEntity>> ProductoGet()
+        {
+            var result = await client.ServicioGetAsync<IEnumerable<ProductoEntity>>("api/Producto");
+
+            return result;
+
+
+        }
+
         public async Task<IEnumerable<ProductoEntity>> ProductoGetLista()
         {
             var result = await client.ServicioGetAsync<IEnumerable<ProductoEntity>>("api/Producto/Lista");
@@ -95,6 +104,20 @@ namespace WebApp
             return result;
 
         }
+
+        public async Task<ProductoEntity> ProductoGetById(int id)
+        {
+            var result = await client.ServicioGetAsync<ProductoEntity>("api/Producto/" + id);
+
+            if (result.CodeError is not 0) throw new Exception(result.MsgError);
+
+            return result;
+
+
+        }
+
+
+
         #endregion
 
     }

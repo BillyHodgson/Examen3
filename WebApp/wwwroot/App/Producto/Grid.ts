@@ -1,10 +1,5 @@
 ﻿namespace ProductoGrid {
 
-
-
-
-
-
     export function OnClickEliminar(id) {
         ComfirmAlert("Desea eliminar este Producto? ", "Eliminar", "warning", "#3085d6", "#d33")
             .then(result => {

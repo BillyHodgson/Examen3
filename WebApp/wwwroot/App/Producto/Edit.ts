@@ -14,7 +14,7 @@
 
         
             ProductoServicio(entity) {
-
+                console.log(entity);
                 if (entity.IdProducto == null) {
                     return App.AxiosProvider.ProductoGuardar(entity);
                 } else {
@@ -26,8 +26,6 @@
                 if (BValidateData(this.Formulario)) {
 
                     Loading.fire("Guardando");
-                    //var test = this.CalculoMontoTotalFn();
-                    //    test = this.CalculoMontoTotalCP;
                     this.ProductoServicio(this.Entity).then(data => {
 
                         Loading.close();

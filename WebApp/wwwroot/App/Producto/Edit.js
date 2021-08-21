@@ -9,6 +9,7 @@ var ProductoEdit;
         },
         methods: {
             ProductoServicio: function (entity) {
+                console.log(entity);
                 if (entity.IdProducto == null) {
                     return App.AxiosProvider.ProductoGuardar(entity);
                 }
@@ -19,8 +20,6 @@ var ProductoEdit;
             Save: function () {
                 if (BValidateData(this.Formulario)) {
                     Loading.fire("Guardando");
-                    //var test = this.CalculoMontoTotalFn();
-                    //    test = this.CalculoMontoTotalCP;
                     this.ProductoServicio(this.Entity).then(function (data) {
                         Loading.close();
                         if (data.CodeError == 0) {

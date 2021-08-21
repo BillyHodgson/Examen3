@@ -19,6 +19,21 @@ namespace WebApiRest.Controllers
             this.productoService = productoService;
         }
 
+
+        [HttpGet]
+        public async Task<IEnumerable<ProductoEntity>> Get()
+        {
+            try
+            {
+                return await productoService.Get();
+            }
+            catch (Exception ex)
+            {
+
+                return new List<ProductoEntity>();
+            }
+        }
+
         [HttpGet("Lista")]
         public async Task<IEnumerable<ProductoEntity>> GetLista()
         {
@@ -30,6 +45,63 @@ namespace WebApiRest.Controllers
             {
 
                 return new List<ProductoEntity>();
+            }
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<ProductoEntity> GetById(int id)
+        {
+            try
+            {
+                return await productoService.GetById(new ProductoEntity { ProductoId = id });
+            }
+            catch (Exception ex)
+            {
+
+                return new ProductoEntity { CodeError = ex.HResult, MsgError = ex.Message };
+            }
+        }
+
+        [HttpPost]
+        public async Task<DBEntity> Create(ProductoEntity entity)
+        {
+            try
+            {
+                return await productoService.Create(entity);
+            }
+            catch (Exception ex)
+            {
+
+                return new DBEntity { CodeError = ex.HResult, MsgError = ex.Message };
+            }
+        }
+
+        [HttpPut]
+        public async Task<DBEntity> Update(ProductoEntity entity)
+        {
+            try
+            {
+                return await productoService.Update(entity);
+            }
+            catch (Exception ex)
+            {
+
+                return new DBEntity { CodeError = ex.HResult, MsgError = ex.Message };
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<DBEntity> Delete(int id)
+        {
+            try
+            {
+                return await productoService.Delete(new ProductoEntity() { ProductoId = id });
+            }
+            catch (Exception ex)
+            {
+
+                return new DBEntity { CodeError = ex.HResult, MsgError = ex.Message };
             }
         }
     }

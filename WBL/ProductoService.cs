@@ -14,8 +14,8 @@ namespace WBL
         Task<DBEntity> Delete(ProductoEntity entity);
         Task<IEnumerable<ProductoEntity>> Get();
         Task<ProductoEntity> GetById(ProductoEntity entity);
-        Task<IEnumerable<ProductoEntity>> GetLista();
         Task<DBEntity> Update(ProductoEntity entity);
+        Task<IEnumerable<ProductoEntity>> GetLista();
     }
 
     public class ProductoService : IProductoService
@@ -55,13 +55,11 @@ namespace WBL
                 return await result;
 
             }
-            catch (Exception)
+            catch (Exception Ex)
             {
 
                 throw;
             }
-
-
 
         }
 

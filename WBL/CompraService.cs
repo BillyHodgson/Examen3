@@ -15,6 +15,7 @@ namespace WBL
         Task<DBEntity> Delete(CompraEntity entity);
         Task<IEnumerable<CompraEntity>> Get();
         Task<CompraEntity> GetById(CompraEntity entity);
+        Task<IEnumerable<CompraEntity>> GetLista();
         Task<DBEntity> Update(CompraEntity entity);
     }
 
@@ -42,7 +43,20 @@ namespace WBL
             }
         }
 
+        public async Task<IEnumerable<CompraEntity>> GetLista()
+        {
+            try
+            {
+                var result = sql.QueryAsync<CompraEntity>("CompraLista");
 
+                return await result;
+            }
+            catch (Exception EX)
+            {
+
+                throw;
+            }
+        }
 
         public async Task<CompraEntity> GetById(CompraEntity entity)
         {

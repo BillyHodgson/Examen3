@@ -92,7 +92,6 @@ namespace WBL
                     entity.NombreCompleto,
                     entity.Direccion,
                     entity.Telefono,
-                    entity.AgenciaId,
                     entity.Estado
                 });
 
@@ -117,7 +116,6 @@ namespace WBL
                     entity.NombreCompleto,
                     entity.Direccion,
                     entity.Telefono,
-                    entity.AgenciaId,
                     entity.Estado
                 });
 
