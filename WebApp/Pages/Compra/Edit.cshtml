@@ -29,7 +29,7 @@
                 <div class="form-group mb-3">
                     <label for="Entity.ProductoId" class="form-label">Producto</label>
 
-                    <select asp-for="Entity.ProductoId" class="form-select" v-model="Entity.VehiculoId"
+                    <select asp-for="Entity.ProductoId" class="form-select" v-model="Entity.ProductoId"
                             asp-items="@(new SelectList(Model.ProductoLista,"ProductoId","Descripcion"))"
                             required>
                         <option value=""></option>
